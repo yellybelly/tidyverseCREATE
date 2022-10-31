@@ -1,0 +1,40 @@
+For this assignment I will be using the 'dplyr' library which is primarily a set of functions designed to enable data frame manipulation in an intuitive, user-friendly way.
+
+```{r}
+library(tidyverse)
+library(dplyr)
+```
+
+```{r}
+spi = read.csv("spi_matches.csv")
+spi
+```
+The groupby() function is a very important function in the dplyr library.
+
+```{r}
+byleauge <- spi %>% group_by(league)
+byleauge
+```
+```{r}
+spi %>% group_by(league) %>% tally()
+```
+
+
+The summarize() function summarizes the data frame into just one value or vector. This summarization is done through grouping observations by using categorical values at first, using the groupby() function
+
+```{r}
+spi %>%
+  group_by(league) %>%
+  summarise(mean_spi1= mean(spi1))
+```
+```{r}
+spi %>%
+  group_by(league) %>%
+  summarise(mean_prob1= mean(prob1))
+```
+
+```{r}
+spi %>%
+  group_by(league) %>%
+  summarise(mean_projscore1= mean(proj_score1))
+```
